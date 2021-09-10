@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Exercicios {
 
+	private static final String NOME_REGEX = "\b[A-Z]+.+[?^ ][A-Z].{1,19}|\\\\b[A-Z]+.+[?^,][A-Z].{1,19}";
 	public static final int EXIBIR_LISTA = 1;
 	public static final int REGISTRAR_CLIENTE = 2;
 	public static final int FECHAR = -1;
@@ -64,7 +65,7 @@ public class Exercicios {
 		boolean registrarNovoCliente = false;
 
 		do {
-
+			/* inputs */
 			System.out.println("======================");
 			System.out.println("Registar novo cliente:");
 
@@ -74,8 +75,13 @@ public class Exercicios {
 			System.out.println("Contato : ");
 			String contatoInput = mainScanner.nextLine().trim();
 
+			/* validação */
 			if(nomeInput.isEmpty() || contatoInput.isEmpty()) {
 				System.out.println("Nome ou contato invalido.");
+				continue;
+			}
+			else if(!nomeInput.matches(NOME_REGEX)) {
+				System.out.println("Nome invalido.");
 				continue;
 			}
 			else if(clientes.stream().anyMatch(cliente -> 
@@ -85,15 +91,15 @@ public class Exercicios {
 				continue;
 			}
 
+			/* adicionar o cliente na lista */
 			clientes.add(new Cliente(nomeInput, contatoInput, clientes.size() + 1));
 
+			/* registrar novo cliente */
 			System.out.println("Registrar novo Cliente? (s/n)");
 			String registar = mainScanner.nextLine();
 
 			registrarNovoCliente = registar.equals("s") ? true : false;
 
 		} while(registrarNovoCliente);
-
 	}
-
 }

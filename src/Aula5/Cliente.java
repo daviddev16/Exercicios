@@ -12,11 +12,22 @@ public class Cliente {
 		this.id = id;
 	}
 
-	public String getPrimeiroNome() {
-		return nome.substring(0, nome.indexOf(' ')).trim();
+	public String[] nomeSeparado() {
+		return nome.split("\\s+");
 	}
+
+	public String getPrimeiroNome() {
+		if(nomeSeparado().length > 1) {
+			return nome.substring(0, nome.indexOf(' ')).trim();	
+		}			
+		return nome;
+	}
+
 	public String getSegundoNome() {
-		return nome.substring(getPrimeiroNome().length(), nome.length()).trim();
+		if(nomeSeparado().length > 1) {
+			return nome.substring(getPrimeiroNome().length(), nome.length()).trim();
+		}
+		return "";
 	}
 
 	public String getNomeCompleto() {
