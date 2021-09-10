@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Exercicios {
 
-	private static final String NOME_REGEX = "\b[A-Z]+.+[?^ ][A-Z].{1,19}|\\\\b[A-Z]+.+[?^,][A-Z].{1,19}";
+	private static final String NOME_REGEX = "\b[A-Z]+.+[?^ ][A-Z].{1,19}|\b[A-Z]+.+[?^,][A-Z].{1,19}";
 	public static final int EXIBIR_LISTA = 1;
 	public static final int REGISTRAR_CLIENTE = 2;
 	public static final int FECHAR = -1;
