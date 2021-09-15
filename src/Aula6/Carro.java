@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class Carro {
 
-	
 	private int numChassi;
 	private String placa;
 	private float velocidadeAtual;
@@ -24,6 +23,10 @@ public class Carro {
 		
 		this.motorista.setCarro(this);
 		
+	}
+	
+	public Carro(String placa, int numChassi) {
+		this(placa, numChassi, null);
 	}
 	
 	public Motorista getMotorista() {
